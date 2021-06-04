@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   
   resources :books do
    resource :favorites, only: [:create, :destroy]
+   resource :post_comments, only: [:create, :destroy] 
   end
-  #favoritesは投稿されたbookに対して、親子関係
+  #favoritesとpost_commentはブックに対して
  
 end

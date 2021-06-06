@@ -1,0 +1,10 @@
+
+<% if @range == "User" %>
+     <!--検索対象がUserのとき、ユーザーを一覧表示-->
+     <h2>Users seach for '<%= @word %>' </h2>
+     <%= render 'users/index',users: @users %> 
+<% else %>
+     <!--検索対象がBookのとき、投稿を一覧表示-->
+     <h2>Books seach for '<%= @word %>' </h2>
+  	 <%= render 'books/index', books: @books%>
+<% end %>

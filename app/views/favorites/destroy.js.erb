@@ -1,0 +1,2 @@
+ <!--'favorite-btnに対して部分テンプレートを適用する-->
+  $("#favorite-btn-<%= @book.id %>").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");

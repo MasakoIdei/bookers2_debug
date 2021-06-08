@@ -1,0 +1,12 @@
+<% if book.favorited_by?(current_user) %>
+<!--remote:trueでjsに操作を飛ばす-->
+  <%= link_to book.favorites.count, book_favorites_path(book), method: :delete, class: "fas fa-heart heart-pink",remote: true %>
+<% else %>
+  <%= link_to book.favorites.count, book_favorites_path(book), method: :post, class: "fas fa-heart heart_blue",remote: true %>
+<% end %>
+
+<!--render後、下の記述だとカウントとアイコンの位置がなぜかずれてしまう問題が発生-->
+<!--link_toの列に、アイコンとカウントを統合。ハートの色はfavorites.scssで指定-->
+ <!--%= link_to book_favorites_path(book), method: :post do %>-->
+ <!--<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>-->
+ <!--%= book.favorites.count %>-->

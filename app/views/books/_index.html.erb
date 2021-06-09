@@ -16,7 +16,8 @@
         </td>
         <td><%= link_to book.title, book_path(book), class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
-        <!--いいね機能↓----------------------------------------------------->
+        <!--いいね機能↓-->
+        <!--非同期通信で使用するためid入りのclass名を追加、-->
         <td id='favorite-btn-<%= book.id %>'>
         <%= render "favorites/favorite-btn", book: book %>
         </td>

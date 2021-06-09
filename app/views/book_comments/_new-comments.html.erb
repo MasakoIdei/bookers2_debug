@@ -1,0 +1,5 @@
+<!--form_withは,localを外せば、remote状態。localをはずす-->
+<%= form_with model:[@book,@book_comment] do |f| %>
+  <%= f.text_area :comment, class: 'form-control' ,placeholder: "コメントをここに" %><br>
+  <%= f.submit '送信'%>
+<% end %>

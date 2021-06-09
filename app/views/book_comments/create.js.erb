@@ -1,0 +1,12 @@
+<!--favotitesと同じ要領でいける？？-->
+<!--訂正前↓フォームとリストを分けたのに、分ける前のインスタンス変数book_comment: @book_commentを使用してしまっていた-->
+<!--#comments_indexと打っていたけど、show画面では、comment_indexで定義していたため、エラー発生-->
+<!--$("#comments_index_%= @book.id %>").html("%= j(render 'book_comments/index', book: @book,book_comment: @book_comment ) %>")-->
+<!--$("textarea").val("")-->
+
+<!--訂正後-->
+$("#comment_index_<%= @book.id %>").html("<%= j(render 'book_comments/index', book: @book ) %>")
+<!--コメント送信用のフォームも読み込む必要があったのに未記入だったため追記-->
+$("#new-comments_<%= @book.id%>").html("<%= j(render 'book_comments/new-comments', book: @book,book_comment: @book_comment ) %>")
+<!--テキストエリアの内容を空白に直す-->
+$("textarea").val("")

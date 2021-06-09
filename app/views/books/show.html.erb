@@ -24,18 +24,8 @@
           　  <%= @book.body %>
           　</td>
           　
-          　<td><!--いいね機能-->
-             　　<% if @book.favorited_by?(current_user) %>
-                　<%= link_to book_favorites_path(@book), method: :delete do %>
-                　<i class="fa fa-heart" aria-hidden="true" style="color: pink;"></i>
-                　<%= @book.favorites.count %>
-                　<% end %>
-            　　<% else %>
-                　<%= link_to book_favorites_path(@book), method: :post do %>
-                　<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>
-                　<%= @book.favorites.count %>
-                　<% end %>
-            　　<% end %>
+          　<td id='favorite-btn-<%= @book.id %>'><!--いいね機能-->
+             　<%= render 'favorites/favorite-btn',book: @book %>
             </td>
             <td><!--コメント数カウント-->
               コメント数：<%= @book.book_comments.count %>
@@ -51,7 +41,15 @@
         　　<% end %>
         </tr>
       </table>
-      <%= render 'books/comment', book: @book,book_comment: @book_comment%>
+      <div id="comment_index_<%= @book.id %>">
+        <!--変更前↓コメント用のフォームとコメントのリストを分けたのに@book_commentの変数をそのままにしていた-->
+        <!--book_comments/indexの中では、@book_comment-->
+        <!--%= render 'book_comments/index', book: @book,book_comment: @book_comment %>-->
+      <%= render 'book_comments/index', book: @book %>
+      </div>
+      <div id="new-comments_<%= @book.id%>">
+      <%= render 'book_comments/new-comments', book: @book,book_comment: @book_comment %>
+      </div>
      </div>
   </div>
 </div>
